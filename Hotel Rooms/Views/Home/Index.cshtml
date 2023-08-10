@@ -1,23 +1,38 @@
-﻿@{
+﻿@using HotelH2.Controllers
+@{
     ViewData["Title"] = "Home Page";
 }
+@model List<Rooms>;
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-    @foreach(var rooms in )
-    {
-        <table>
+    <table id="historyTable" class="table">
+        <thead>
             <tr>
-                <td>@rooms.id</td>
-                <td>@rooms.type</td>
-                <td>@rooms.roomTemp</td>
-                <td>@rooms.price</td>
-                <td>@rooms.available</td>
-                <td>@rooms.dateStart</td>
-                <td>@rooms.dateEnd</td>
+                <th>Id</th>
+                <th>Type</th>
+                <th>RoomTemp</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>DateStart</th>
+                <th>DateEnd</th>
             </tr>
-        </table>
-    }
+        </thead>
+        <tbody>
+            @foreach(var rooms in Model)
+            {
+                <tr>
+                    <td>@rooms.id</td>
+                    <td>@rooms.type</td>
+                    <td>@rooms.roomTemp</td>
+                    <td>@rooms.price</td>
+                    <td>@rooms.available</td>
+                    <td>@rooms.dateStart</td>
+                    <td>@rooms.dateEnd</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
