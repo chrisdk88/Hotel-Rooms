@@ -39,27 +39,46 @@ namespace HotelH2.Controllers
                 {
                     string query = "SELECT * FROM [HotelRooms].[dbo].[Rooms]";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    // my method
+                    void Print(string query)
                     {
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            while (reader.Read())
+                            using (SqlDataReader reader = command.ExecuteReader())
                             {
-                                Rooms tempList = new Rooms();
+                                while (reader.Read())
+                                {
+                                    Rooms tempList = new Rooms();
 
-                                tempList.id = (int)reader[0];
-                                tempList.type = (string)reader[1];
-                                tempList.roomTemp = (int)reader[2];
-                                tempList.price = (int)reader[3];
-                                tempList.available = (bool)reader[4];
-                                //tempList.dateStart = (DateOnly)reader[5];
-                                //tempList.dateEnd = (DateOnly)reader[6];
+                                    tempList.id = (int)reader[0];
+                                    tempList.type = (string)reader[1];
+                                    tempList.roomTemp = (int)reader[2];
+                                    tempList.price = (int)reader[3];
+                                    tempList.available = (bool)reader[4];
+                                    if (!reader.IsDBNull(5))
+                                    {
+                                        DateTime startDateTime = reader.GetDateTime(5);
+                                        tempList.dateStart = new System.DateOnly(startDateTime.Year, startDateTime.Month, startDateTime.Day);
+                                    }
+                                    else
+                                    {
 
-                                RoomsList.Add(tempList);
+                                    }
+                                    if (!reader.IsDBNull(6))
+                                    {
+                                        DateTime slutDateTime = reader.GetDateTime(6);
+                                        tempList.dateEnd = new System.DateOnly(slutDateTime.Year, slutDateTime.Month, slutDateTime.Day);
+                                    }
+
+                                    RoomsList.Add(tempList);
+                                }
+
                             }
-
                         }
                     }
+
+                    Print(query);
+
                     connection.Close();
                 }
                 catch (SqlException e)
