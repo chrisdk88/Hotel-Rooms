@@ -1,0 +1,146 @@
+﻿@using HotelH2.Controllers
+@using Hotel_Rooms.Models;
+@{
+    ViewData["Title"] = "Status";
+    int roomNumberStandard = 101;
+    int roomNumberPremium = 201;
+    int roomNumberDeluxe = 301;
+}
+@model List<Rooms>;
+
+<div class="text-center">
+    <h1 class="display-4" style="font-weight: bold;">Status</h1>
+
+    <div class="container col-12">
+        <div class="row" style="background-color: lightgray; min-height: 100px;">
+            <h1>Reserved</h1>
+            <div class="col" style="min-height: 100px;">
+                <h3>Standard</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Room number</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var rooms in Model)
+                        {
+                            if (@rooms.type == "standard")
+                            {
+                                <tr>
+                                    <td>@roomNumberStandard</td>
+                                    <td>                            
+                                        @if (@rooms.available == "Available")
+                                        {
+                                            <div style="height: 25px; width: 40px; background-color: green; margin: 0 auto;"></div>
+                                        } else
+                                        {
+                                            <div style="height: 25px; width: 40px; background-color: red; margin: 0 auto;"></div>
+                                        }
+                                    </td>
+                                </tr>
+                                roomNumberStandard++;                                
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col" style="min-height: 100px;">
+                <h3>Premium</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Room number</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var rooms in Model)
+                        {
+                            @if (@rooms.type == "Premium")
+                            {
+                                <tr>
+                                    <td>@roomNumberPremium</td>
+                                    <td>                            
+                                        @if (@rooms.available == "Available")
+                                        {
+                                            <div style="height: 25px; width: 40px; background-color: green; margin: 0 auto;"></div>
+                                        } else
+                                        {
+                                            <div style="height: 25px; width: 40px; background-color: red; margin: 0 auto;"></div>
+                                        }
+                                    </td>
+                                </tr>
+                                roomNumberPremium++;                                
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col" style="min-height: 100px;">
+                <h3>Deluxe</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Room number</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var rooms in Model)
+                        {
+                            @if (@rooms.type == "Deluxe")
+                            {
+                                <tr>
+                                    <td>@roomNumberDeluxe</td>
+                                    <td>
+                                        @if (@rooms.available == "Available")
+                                        {
+                                            <div style="height: 25px; width: 40px; background-color: green; margin: 0 auto;"></div>
+                                        } else
+                                        {
+                                            <div style="height: 25px; width: 40px; background-color: red; margin: 0 auto;"></div>
+                                        }
+                                    </td>
+                                </tr>
+                                roomNumberDeluxe++;                                
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>RoomTemp</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>DateStart</th>
+                <th>DateEnd</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var rooms in Model)
+            {
+                <tr>
+                    <td>@rooms.id</td>
+                    <td>@rooms.type</td>
+                    <td>@rooms.roomTemp</td>
+                    <td>@rooms.price</td>
+                    <td>@rooms.available</td>
+                    <td>@rooms.dateStart</td>
+                    <td>@rooms.dateEnd</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
