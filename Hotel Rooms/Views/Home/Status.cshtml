@@ -23,7 +23,7 @@
                     <tbody>
                         @foreach(var rooms in Model)
                         {
-                            if (@rooms.type == "standard")
+                            @if (@rooms.type == "standard")
                             {
                                 <tr>
                                     <td>
@@ -65,7 +65,15 @@
                             @if (@rooms.type == "Premium")
                             {
                                 <tr>
-                                    <td><a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = @rooms.roomNumber })">@rooms.roomNumber</a></td>
+                                    <td>
+                                        @if (@rooms.available == "Available")
+                                        {
+                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                        } else
+                                        {
+                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                        }
+                                    </td>                                    
                                     <td>                            
                                         @if (@rooms.available == "Available")
                                         {
@@ -96,7 +104,15 @@
                             @if (@rooms.type == "Deluxe")
                             {
                                 <tr>
-                                    <td><a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = @rooms.roomNumber })">@rooms.roomNumber</a></td>
+                                    <td>
+                                        @if (@rooms.available == "Available")
+                                        {
+                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                        } else
+                                        {
+                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                        }
+                                    </td>                                    
                                     <td>
                                         @if (@rooms.available == "Available")
                                         {

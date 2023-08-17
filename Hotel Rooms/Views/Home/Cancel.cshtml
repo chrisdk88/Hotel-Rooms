@@ -8,13 +8,13 @@
 <div>
     <h1 class="display-4 text-center" style="font-weight: bold;">Booking</h>
     <div class="container col-12" style="background-color: lightgray;">
-        <form method="post" asp-action="bookingCancel">
+        <form method="post" asp-action="CancelBooking">
             <div style="display: table-caption;" class="fs-5">
-                <label for="roomnumber">room number:</label>
-                <input class="mb-3" type="number" name="roomnumber" value="@(Model.roomNumber)" readonly>
+                <label for="roomNumber">room number:</label>
+                <input class="mb-3" type="number" name="roomNumber" value="@Model.roomNumber" readonly>
                 <br>
                 <label for="type">type:</label>
-                <input class="mb-3" type="text" name="type" value="@(Model.type)" readonly>
+                <input class="mb-3" type="text" name="type" value="@Model.type" readonly>
                 <br>
                 <input class="form-group crudInput" type="submit" value="Cancel">
             </div>
