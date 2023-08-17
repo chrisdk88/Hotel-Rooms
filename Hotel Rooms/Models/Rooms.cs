@@ -9,6 +9,6 @@
         public string available { get; set; }
         public DateOnly dateStart { get; set; }
         public DateOnly dateEnd { get; set; }
-
+        public int roomNumber { get; set; }
     }
 }

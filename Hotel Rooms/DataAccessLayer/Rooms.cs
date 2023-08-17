@@ -47,6 +47,7 @@ namespace HotelH2.Controllers
                                     DateTime slutDateTime = reader.GetDateTime(6);
                                     tempList.dateEnd = new System.DateOnly(slutDateTime.Year, slutDateTime.Month, slutDateTime.Day);
                                 }
+                                tempList.roomNumber = (int)reader[7];
 
                                 RoomsList.Add(tempList);
                             }

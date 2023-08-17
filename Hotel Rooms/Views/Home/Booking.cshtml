@@ -1,6 +1,34 @@
-﻿@{
+﻿@using HotelH2.Controllers
+@using Hotel_Rooms.Models;
+@model Hotel_Rooms.Models.Rooms;
+@{
     ViewData["Title"] = "Booking";
 }
 
-<h1>Booking</h1>
+<div>
+    <h1 class="display-4 text-center" style="font-weight: bold;">Booking</h>
+    <div class="container col-12" style="background-color: lightgray;">
+        <form method="post" asp-action="bookingUpdate">
+            <div style="display: table-caption;" class="fs-5">
+                <label for="roomNumber">Room Number:</label>
+                <input class="mb-3" type="number" name="roomNumber" value="@Model.roomNumber" readonly>
+                <br>
+                <label for="type">Type:</label>
+                <input class="mb-3" type="text" name="type" value="@Model.type" readonly>
+                <br>
+                <label for="price">Price:</label>
+                <input class="mb-3" type="number" name="price" value="@Model.price">
+                <br>
+                @*<label for="startDate">Start date:</label>
+                <input class="mb-3" type="date" name="startDate" value="@Model.dateStart">
+                <br>
+                <label for="endDate">End date:</label>
+                <input class="mb-3" type="date" name="endDate" value="@Model.dateEnd">
+                <br>*@
+                <input class="form-group crudInput" type="submit" value="Book">
+            </div>
+        </form>
+    </div>
+</div>
+
 

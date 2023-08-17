@@ -2,9 +2,6 @@
 @using Hotel_Rooms.Models;
 @{
     ViewData["Title"] = "Status";
-    int roomNumberStandard = 101;
-    int roomNumberPremium = 201;
-    int roomNumberDeluxe = 301;
 }
 @model List<Rooms>;
 
@@ -29,7 +26,15 @@
                             if (@rooms.type == "standard")
                             {
                                 <tr>
-                                    <td>@roomNumberStandard</td>
+                                    <td>
+                                        @if (@rooms.available == "Available")
+                                        {
+                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                        } else
+                                        {
+                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                        }
+                                    </td>
                                     <td>                            
                                         @if (@rooms.available == "Available")
                                         {
@@ -39,8 +44,7 @@
                                             <div style="height: 25px; width: 40px; background-color: red; margin: 0 auto;"></div>
                                         }
                                     </td>
-                                </tr>
-                                roomNumberStandard++;                                
+                                </tr>                             
                             }
                         }
                     </tbody>
@@ -61,7 +65,7 @@
                             @if (@rooms.type == "Premium")
                             {
                                 <tr>
-                                    <td>@roomNumberPremium</td>
+                                    <td><a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = @rooms.roomNumber })">@rooms.roomNumber</a></td>
                                     <td>                            
                                         @if (@rooms.available == "Available")
                                         {
@@ -71,8 +75,7 @@
                                             <div style="height: 25px; width: 40px; background-color: red; margin: 0 auto;"></div>
                                         }
                                     </td>
-                                </tr>
-                                roomNumberPremium++;                                
+                                </tr>                           
                             }
                         }
                     </tbody>
@@ -93,7 +96,7 @@
                             @if (@rooms.type == "Deluxe")
                             {
                                 <tr>
-                                    <td>@roomNumberDeluxe</td>
+                                    <td><a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = @rooms.roomNumber })">@rooms.roomNumber</a></td>
                                     <td>
                                         @if (@rooms.available == "Available")
                                         {
@@ -103,8 +106,7 @@
                                             <div style="height: 25px; width: 40px; background-color: red; margin: 0 auto;"></div>
                                         }
                                     </td>
-                                </tr>
-                                roomNumberDeluxe++;                                
+                                </tr>                           
                             }
                         }
                     </tbody>
@@ -125,6 +127,7 @@
                 <th>Available</th>
                 <th>DateStart</th>
                 <th>DateEnd</th>
+                <th>RoomNumber</th>
             </tr>
         </thead>
         <tbody>
@@ -138,6 +141,7 @@
                     <td>@rooms.available</td>
                     <td>@rooms.dateStart</td>
                     <td>@rooms.dateEnd</td>
+                    <td>@rooms.roomNumber</td>
                 </tr>
             }
         </tbody>
