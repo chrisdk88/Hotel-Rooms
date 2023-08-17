@@ -29,10 +29,10 @@
                                     <td>
                                         @if (@rooms.available == "Available")
                                         {
-                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })" class="btn btn-primary">@rooms.roomNumber</a>
                                         } else
                                         {
-                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })" class="btn btn-primary">@rooms.roomNumber</a>
                                         }
                                     </td>
                                     <td>                            
@@ -68,10 +68,10 @@
                                     <td>
                                         @if (@rooms.available == "Available")
                                         {
-                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })" class="btn btn-primary">@rooms.roomNumber</a>
                                         } else
                                         {
-                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })" class="btn btn-primary">@rooms.roomNumber</a>
                                         }
                                     </td>                                    
                                     <td>                            
@@ -107,10 +107,10 @@
                                     <td>
                                         @if (@rooms.available == "Available")
                                         {
-                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                            <a href="@Url.Action("Booking", new { id = rooms.id , roomNumber = rooms.roomNumber })" class="btn btn-primary">@rooms.roomNumber</a>
                                         } else
                                         {
-                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })">@rooms.roomNumber</a>
+                                            <a href="@Url.Action("Cancel", new { id = rooms.id , roomNumber = rooms.roomNumber })" class="btn btn-primary">@rooms.roomNumber</a>
                                         }
                                     </td>                                    
                                     <td>
@@ -133,7 +133,7 @@
 
     <hr>
 
-    <table class="table">
+    <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th>Id</th>
